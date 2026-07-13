@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineWave - Premium Movie Ticket Booking</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+
+  <!-- App Shell -->
+  <div class="app-container">
+    
+    <!-- Header Navigation -->
+    <header class="app-header">
+      <div class="header-logo" id="nav-logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="28" height="28">
+          <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Cine<span class="text-gradient">Wave</span></span>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-btn active" id="btn-nav-movies" data-target="view-explorer">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z" fill="currentColor"/></svg>
+          <span>Movies</span>
+        </button>
+        <button class="nav-btn" id="btn-nav-bookings" data-target="view-bookings">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2L7.5 3.5L6 2L4.5 3.5L3 2v20z" fill="currentColor"/></svg>
+          <span>My Bookings</span>
+        </button>
+        <button class="nav-btn admin-badge" id="btn-nav-admin" data-target="view-admin">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3-1.57-3-3.5s1.07-3.5 3-3.5 3 1.57 3 3.5-1.07 3.5-3 3.5z" fill="currentColor"/></svg>
+          <span>Admin Portal</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+
+      <!-- 1. MOVIE EXPLORER VIEW -->
+      <section id="view-explorer" class="app-view active">
+        <!-- Hero Section -->
+        <div class="hero-banner" id="hero-banner-container">
+          <div class="hero-backdrop" style="background-image: url('assets/poster_nebula.png');"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-badge">FEATURED BLOCKBUSTER</span>
+            <h1 class="hero-title">Nebula Warriors: Starfall</h1>
+            <p class="hero-synopsis">A band of rogue outer-rim fighters must unite to prevent a dark energy weapon from consuming the Galactic Core, facing internal betrayals and a ruthless alien hegemony.</p>
+            <div class="hero-meta">
+              <span class="meta-item"><strong class="highlight-text">IMDb:</strong> 8.7</span>
+              <span class="meta-item">Sci-Fi • Action</span>
+              <span class="meta-item">142 min</span>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="hero-btn-book" data-movie-id="mov-1">
+                <span>Book Tickets Now</span>
+              </button>
+              <button class="btn btn-secondary" id="hero-btn-trailer" data-trailer="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                <span>Watch Trailer</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="filter-toolbar">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 5 9.5 9.5 5 12 7.01 14 9.5 14 11.99 14 14c0 2.49-2.01 4.5-4.5 4.5z" fill="currentColor"/></svg>
+            <input type="text" id="search-input" placeholder="Search movies, genres, cast...">
+          </div>
+          <div class="filters-group">
+            <div class="filter-select-wrapper">
+              <select id="genre-filter">
+                <option value="">All Genres</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Drama">Drama</option>
+                <option value="Romance">Romance</option>
+              </select>
+            </div>
+            <div class="filter-select-wrapper">
+              <select id="cinema-filter">
+                <option value="">All Theaters</option>
+                <option value="cin-1">Apex Cinemas</option>
+                <option value="cin-2">Nova Theaters</option>
+                <option value="cin-3">Starlight Screen</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movies Grid -->
+        <div class="movies-section">
+          <h2 class="section-title">Now Showing</h2>
+          <div class="movies-grid" id="movies-grid-container">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. MOVIE DETAILS VIEW -->
+      <section id="view-details" class="app-view">
+        <div class="view-header">
+          <button class="back-btn" id="details-back-btn">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/></svg>
+            <span>Back to Movies</span>
+          </button>
+        </div>
+
+        <div class="movie-details-container" id="movie-details-content">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </section>
+
+      <!-- 3. SEAT SELECTION VIEW -->
+      <section id="view-seats" class="app-view">
+        <div class="view-header">
+          <button class="back-btn" id="seats-back-btn">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/></svg>
+            <span>Change Showtime</span>
+          </button>
+          <div class="booking-timer" id="seat-timer">
+            <span class="timer-label">Seats Held for:</span>
+            <span class="timer-countdown" id="timer-text">05:00</span>
+          </div>
+        </div>
+
+        <div class="seating-workspace">
+          <!-- Theater Seating Chart -->
+          <div class="seating-chart-container">
+            <div class="screen-indicator">
+              <div class="screen-glow"></div>
+              <span class="screen-text">CINEMA SCREEN</span>
+            </div>
+
+            <!-- Seat Layout Grid -->
+            <div class="seats-grid-wrapper">
+              <div class="seats-grid" id="seating-grid">
+                <!-- Dynamically populated rows -->
+              </div>
+            </div>
+
+            <!-- Seating Legend -->
+            <div class="seating-legend">
+              <div class="legend-item">
+                <div class="legend-seat seat-available"></div>
+                <span>Available</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-seat seat-selected"></div>
+                <span>Selected</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-seat seat-booked"></div>
+                <span>Booked</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-seat seat-vip"></div>
+                <span>VIP ($25)</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-seat seat-premium"></div>
+                <span>Premium ($18)</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-seat seat-standard"></div>
+                <span>Standard ($12)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout / Seating Summary Sidebar -->
+          <div class="seating-summary-panel">
+            <h3 class="panel-title">Booking Summary</h3>
+            <div class="summary-details">
+              <div class="summary-movie-info">
+                <h4 id="summary-movie-title">Movie Title</h4>
+                <p id="summary-cinema-name">Cinema Location</p>
+                <p id="summary-show-time">Date & Time</p>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="summary-seats-info">
+                <div class="summary-label">Selected Seats:</div>
+                <div class="selected-seats-badges" id="selected-seats-list">
+                  <span class="no-seats-selected">No seats chosen yet</span>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="price-breakdown">
+                <div class="price-row" id="breakdown-vip-row">
+                  <span id="breakdown-vip-qty">0x VIP Seats</span>
+                  <span id="breakdown-vip-cost">$0.00</span>
+                </div>
+                <div class="price-row" id="breakdown-premium-row">
+                  <span id="breakdown-premium-qty">0x Premium Seats</span>
+                  <span id="breakdown-premium-cost">$0.00</span>
+                </div>
+                <div class="price-row" id="breakdown-standard-row">
+                  <span id="breakdown-standard-qty">0x Standard Seats</span>
+                  <span id="breakdown-standard-cost">$0.00</span>
+                </div>
+                <div class="price-row">
+                  <span>Convenience Fee (10%)</span>
+                  <span id="breakdown-fees">$0.00</span>
+                </div>
+                <div class="divider"></div>
+                <div class="price-row total-row">
+                  <span>Total Amount</span>
+                  <span id="summary-total-price">$0.00</span>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-block" id="btn-proceed-checkout" disabled>
+                <span>Proceed to Checkout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CHECKOUT / PAYMENT FORM -->
+      <section id="view-checkout" class="app-view">
+        <div class="view-header">
+          <button class="back-btn" id="checkout-back-btn">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/></svg>
+            <span>Back to Seats</span>
+          </button>
+        </div>
+
+        <div class="checkout-layout">
+          <!-- Payment Forms Card -->
+          <div class="checkout-form-card glass-panel">
+            <h2 class="card-title">Booking Details</h2>
+            
+            <form id="booking-info-form">
+              <div class="form-section">
+                <h3>1. Contact Information</h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="checkout-name">Full Name</label>
+                    <input type="text" id="checkout-name" required placeholder="John Doe">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="checkout-email">Email Address</label>
+                    <input type="email" id="checkout-email" required placeholder="john.doe@example.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="checkout-phone">Mobile Number</label>
+                    <input type="tel" id="checkout-phone" required placeholder="+1 (555) 019-2834">
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="form-section">
+                <h3>2. Select Payment Method</h3>
+                <div class="payment-methods">
+                  <label class="payment-method-card">
+                    <input type="radio" name="payment-type" value="card" checked>
+                    <div class="payment-card-content">
+                      <svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" fill="currentColor"/></svg>
+                      <span>Credit / Debit Card</span>
+                    </div>
+                  </label>
+                  <label class="payment-method-card">
+                    <input type="radio" name="payment-type" value="upi">
+                    <div class="payment-card-content">
+                      <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" fill="currentColor"/></svg>
+                      <span>UPI QR Scanner</span>
+                    </div>
+                  </label>
+                  <label class="payment-method-card">
+                    <input type="radio" name="payment-type" value="wallet">
+                    <div class="payment-card-content">
+                      <svg viewBox="0 0 24 24" width="24" height="24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="currentColor"/></svg>
+                      <span>Digital Wallet</span>
+                    </div>
+                  </label>
+                </div>
+
+                <!-- Form Fields Specific to Card Payment -->
+                <div class="payment-fields-container" id="card-fields">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="card-number">Card Number</label>
+                      <input type="text" id="card-number" placeholder="4111 2222 3333 4444" maxlength="19">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="card-expiry">Expiry Date</label>
+                      <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="form-group">
+                      <label for="card-cvv">CVV</label>
+                      <input type="password" id="card-cvv" placeholder="•••" maxlength="3">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form Fields Specific to UPI -->
+                <div class="payment-fields-container hidden" id="upi-fields">
+                  <div class="upi-scanner-placeholder">
+                    <div class="qr-code-svg">
+                      <!-- Rendered dynamically as QR code representation -->
+                      <svg viewBox="0 0 100 100" width="120" height="120" class="qr-svg">
+                        <rect x="10" y="10" width="20" height="20" fill="currentColor"/>
+                        <rect x="15" y="15" width="10" height="10" fill="var(--color-bg-dark)"/>
+                        <rect x="70" y="10" width="20" height="20" fill="currentColor"/>
+                        <rect x="75" y="15" width="10" height="10" fill="var(--color-bg-dark)"/>
+                        <rect x="10" y="70" width="20" height="20" fill="currentColor"/>
+                        <rect x="15" y="75" width="10" height="10" fill="var(--color-bg-dark)"/>
+                        <!-- Random bits -->
+                        <rect x="40" y="20" width="10" height="10" fill="currentColor"/>
+                        <rect x="50" y="40" width="10" height="10" fill="currentColor"/>
+                        <rect x="35" y="60" width="15" height="15" fill="currentColor"/>
+                        <rect x="70" y="60" width="10" height="10" fill="currentColor"/>
+                        <rect x="80" y="80" width="10" height="10" fill="currentColor"/>
+                      </svg>
+                    </div>
+                    <p class="scan-instructions">Scan this mock QR code with any UPI app to complete checkout simulated payment.</p>
+                  </div>
+                </div>
+
+                <!-- Wallet Fields -->
+                <div class="payment-fields-container hidden" id="wallet-fields">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="wallet-select">Choose Wallet Service</label>
+                      <select id="wallet-select">
+                        <option>WavePay (Balance: $45.00)</option>
+                        <option>CinemaLink Wallet</option>
+                        <option>PayFlex Express</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-large margin-top" id="btn-submit-booking">
+                <span>Pay <span id="checkout-amount-label">$0.00</span> & Confirm Ticket</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Quick Recap Card -->
+          <div class="checkout-recap-card glass-panel">
+            <h3 class="card-title">Order Recap</h3>
+            <div id="checkout-recap-content">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. TICKET CONFIRMATION VIEW -->
+      <section id="view-ticket" class="app-view">
+        <div class="success-header">
+          <div class="success-circle">
+            <svg viewBox="0 0 24 24" width="36" height="36"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+          </div>
+          <h2>Booking Confirmed!</h2>
+          <p>Your ticket is successfully booked. Present the digital pass at the theater lobby.</p>
+        </div>
+
+        <!-- Boarding Pass Ticket Visualizer -->
+        <div class="ticket-receipt-container" id="ticket-stub-receipt">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <div class="ticket-actions">
+          <button class="btn btn-secondary" id="btn-print-ticket">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/></svg>
+            <span>Print Ticket</span>
+          </button>
+          <button class="btn btn-primary" id="btn-ticket-done">
+            <span>Back to Homepage</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 6. MY BOOKINGS VIEW -->
+      <section id="view-bookings" class="app-view">
+        <h2 class="view-title">My Booking History</h2>
+        
+        <div class="bookings-tabs">
+          <button class="tab-btn active" id="tab-active-bookings">Active Tickets</button>
+          <button class="tab-btn" id="tab-past-bookings">Past / Cancelled</button>
+        </div>
+
+        <div class="bookings-history-list" id="bookings-history-list">
+          <!-- Filled dynamically -->
+        </div>
+      </section>
+
+      <!-- 7. ADMIN DASHBOARD VIEW -->
+      <section id="view-admin" class="app-view">
+        <div class="admin-grid">
+          <!-- Admin Left: Manage Content -->
+          <div class="admin-card glass-panel">
+            <h2 class="card-title">Manage Movies</h2>
+            
+            <!-- Movie Add Form -->
+            <form id="add-movie-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="admin-title">Movie Title</label>
+                  <input type="text" id="admin-title" required placeholder="e.g. Galactic Odyssey">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="admin-genre">Genres (comma separated)</label>
+                  <input type="text" id="admin-genre" required placeholder="Sci-Fi, Action, Thriller">
+                </div>
+                <div class="form-group">
+                  <label for="admin-rating">Rating Category</label>
+                  <select id="admin-rating">
+                    <option>G</option>
+                    <option>PG</option>
+                    <option selected>PG-13</option>
+                    <option>R</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="admin-duration">Duration</label>
+                  <input type="text" id="admin-duration" required placeholder="e.g. 120 min">
+                </div>
+                <div class="form-group">
+                  <label for="admin-userrating">IMDb Rating</label>
+                  <input type="number" id="admin-userrating" step="0.1" min="1" max="10" required placeholder="8.5">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="admin-director">Director</label>
+                  <input type="text" id="admin-director" required placeholder="e.g. Christopher Nolan">
+                </div>
+                <div class="form-group">
+                  <label for="admin-cast">Key Cast (comma separated)</label>
+                  <input type="text" id="admin-cast" required placeholder="Leonardo DiCaprio, Tom Hardy">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="admin-synopsis">Synopsis</label>
+                  <textarea id="admin-synopsis" required placeholder="Enter brief movie plot synopsis..." rows="3"></textarea>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-secondary btn-block">
+                <span>Add Movie to Roster</span>
+              </button>
+            </form>
+
+            <div class="divider"></div>
+            
+            <div class="critical-actions">
+              <h3>System Actions</h3>
+              <button class="btn btn-outline" id="btn-admin-reset-bookings">
+                <span>Reset Database & Seed Bookings</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Admin Right: Stats and Analysis -->
+          <div class="admin-card glass-panel flex-column">
+            <h2 class="card-title">Theater Analytics</h2>
+            
+            <!-- Statistical Cards -->
+            <div class="stats-mini-grid">
+              <div class="mini-stat-box">
+                <span class="stat-label">Total Tickets Sold</span>
+                <span class="stat-value" id="stat-total-tickets">0</span>
+              </div>
+              <div class="mini-stat-box">
+                <span class="stat-label">Total Gross Revenue</span>
+                <span class="stat-value text-gradient" id="stat-total-revenue">$0.00</span>
+              </div>
+              <div class="mini-stat-box">
+                <span class="stat-label">Average Seating Occupancy</span>
+                <span class="stat-value" id="stat-occupancy-rate">0%</span>
+              </div>
+            </div>
+
+            <!-- Custom Visualization -->
+            <div class="admin-charts-container">
+              <h3>Sales Share by Movie</h3>
+              <div class="chart-bars-list" id="revenue-chart-bars">
+                <!-- Dynamically sized styled bars representation -->
+              </div>
+            </div>
+
+            <div class="admin-table-container">
+              <h3>Recent Seating Reserves</h3>
+              <div class="table-wrapper">
+                <table class="admin-stats-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Movie</th>
+                      <th>Seats</th>
+                      <th>Cinema</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-recent-bookings-table">
+                    <!-- Populated in JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Global App Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 CineWave Entertainment. All rights reserved.</p>
+      <div class="footer-links">
+        <span>Terms of Service</span>
+        <span>Privacy Policy</span>
+        <span>Customer Support</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Chatbot Widget -->
+  <button id="chatbot-toggle-btn" title="Chat with CineWave Assistant">
+    <svg viewBox="0 0 24 24">
+      <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+    </svg>
+    <span class="notification-badge"></span>
+  </button>
+
+  <div id="chatbot-container">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar-wrapper">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+          </svg>
+          <div class="chat-online-dot"></div>
+        </div>
+        <div class="chat-header-text">
+          <h3>CineWave Assistant</h3>
+          <span>AI Virtual Agent • Online</span>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="chat-header-btn" id="chat-clear" title="Clear chat history">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+          </svg>
+        </button>
+        <button class="chat-header-btn" id="chat-close" title="Minimize chat">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 13H5v-2h14v2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatbot-messages">
+      <!-- Chat bubbles appended dynamically -->
+    </div>
+
+    <div class="chat-input-panel">
+      <div class="chat-input-wrapper">
+        <input type="text" id="chat-input-field" placeholder="Ask me anything..." autocomplete="off">
+        <button class="chat-mic-btn" id="chat-mic-btn" title="Speak to assistant">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+      <button class="chat-send-btn" id="chat-send-btn" title="Send message">
+        <svg viewBox="0 0 24 24">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Global Trailer Lightbox Modal -->
+  <div class="modal-backdrop" id="trailer-modal">
+    <div class="modal-body modal-large">
+      <button class="modal-close" id="trailer-close-btn">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+      </button>
+      <div class="trailer-iframe-wrapper">
+        <iframe id="trailer-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Declarations -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
