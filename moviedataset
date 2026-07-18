@@ -1,0 +1,16 @@
+interface Movie {
+  id: string;            // Unique identifier matching mov-* format
+  title: string;         // Title of the movie
+  genre: string[];       // Genres matching filter options (Sci-Fi, Action, etc.)
+  rating: string;        // Age rating (PG, PG-13, R, G)
+  userRating: number;    // Rating score (out of 10)
+  duration: string;      // Runtime string (e.g. "142 min")
+  language: string;      // Spoken language and audio formats
+  releaseDate: string;   // Date string in YYYY-MM-DD
+  director: string;      // Name of the director
+  cast: string[];        // Array of main actors/cast members
+  synopsis: string;      // Plot summary
+  bannerColor: string;   // CSS linear-gradient matching theme aesthetic
+  posterUrl: string;     // URL path to poster image (supports Unsplash previews)
+  trailerUrl: string;    // YouTube embed link for trailer modals
+}
