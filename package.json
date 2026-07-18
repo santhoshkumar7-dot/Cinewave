@@ -1,0 +1,16 @@
+{
+  "name": "cinewave-movie-booking",
+  "version": "1.0.0",
+  "description": "Premium Movie Ticket Booking System with Gemini-powered AI Chatbot",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
